@@ -1,0 +1,44 @@
+ALGORITHM Sum_Overlapping
+VAR
+    
+    htab : HASH_TABLE<INTEGER,INTEGER>
+    x,y,i,j : INTEGER ; 
+    tabOne : ARRAY_OF_INTEGER[x];
+    tabTwo : ARRAY_OF_INTEGER[y];
+    sumOverlapping : INTEGER := 0;
+
+    key : INTEGER :=2;
+
+BEGIN
+     //read first array and insert htab
+    
+    FOR i FROM 0 TO x-1  STEP 1 DO
+        Read(tabOne[i]); 
+        htab.insert(key,tabOne[i]);
+        key := key + 1;
+    END_FOR
+
+    //read second array and insert htab
+    FOR j FROM 0 TO y-1 STEP 1 DO
+        Read(tabTwo[j]);
+        htab.insert(key,tabTwo[j]);
+        key := key +1;
+    END_FOR
+    
+    //tester si une valeur se repete 2 fois dans htab
+    FOR i FROM 0 TO x-1 STEP 1  DO
+        IF ( htab.lookup(tabOne[i]) = TRUE ) THEN
+            Count := count + 1 ;
+        END_IF
+        //si on trouve la valeur 2 fois
+        IF (count = 2) THEN
+            htab.insert(1,tabOne[i]);
+            sumDistinct := sumDistinct + (htab.get(1) *2) ;
+        END_IF
+        
+    END_FOR
+
+    Write (sumOverlapping);
+
+
+END

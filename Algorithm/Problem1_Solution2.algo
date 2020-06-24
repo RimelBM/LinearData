@@ -1,0 +1,59 @@
+ALGORITHM Sum_Distinct
+VAR
+    
+    htab : HASH_TABLE<INTEGER,INTEGER>
+    x,y,i,j : INTEGER ; 
+    tabOne : ARRAY_OF_INTEGER[x];
+    tabTwo : ARRAY_OF_INTEGER[y];
+    sumDistinct : INTEGER := 0;
+
+    key : INTEGER :=2;
+
+BEGIN
+     //read first array and insert htab
+    
+    FOR i FROM 0 TO x-1  STEP 1 DO
+        Read(tabOne[i]); 
+        htab.insert(key,tabOne[i]);
+        key := key + 1;
+    END_FOR
+
+    //read second array and insert htab
+    FOR j FROM 0 TO y-1 STEP 1 DO
+        Read(tabTwo[j]);
+        htab.insert(key,tabTwo[j]);
+        key := key +1;
+    END_FOR
+    
+    //tester si une valeur dans tabOne se trouve 1 fois ou 2 dans le htab
+    FOR i FROM 0 TO x-1 STEP 1  DO
+        IF ( htab.lookup(tabOne[i]) = TRUE ) THEN
+            Count := count + 1 ;
+        END_IF
+        IF (count = 1) THEN
+            htab.insert(1,tabOne[i]);
+            sumDistinct := sumDistinct + htab.get(1);
+        END_IF
+        
+    END_FOR
+
+    //tester si une valeur dans tabTwo se trouve 1 fois ou 2 dans le htab
+    FOR j FROM 0 TO y-1 STEP 1  DO
+        IF ( htab.lookup(tabTwo[i]) = TRUE ) THEN
+            Count := count + 1 ;
+        END_IF
+        IF (count = 1) THEN
+            htab.insert(1,tabOne[i]);
+            sumDistinct := sumDistinct + htab.get(1);
+        END_IF
+        
+    END_FOR
+
+    Write (sumDistinct);
+
+
+
+
+END_WHILE
+
+END

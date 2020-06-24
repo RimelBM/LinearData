@@ -1,0 +1,34 @@
+ALGORITHM Sum_Overlapping
+VAR
+    x,y,i,j : INTEGER ; 
+    tabOne : ARRAY_OF_INTEGER[x];
+    tabTwo : ARRAY_OF_INTEGER[y];
+    sumOverlapping : INTEGER := 0;
+
+BEGIN
+    
+    //insert first array
+    
+    FOR i FROM 0 TO x-1  STEP 1 DO
+        Read(tabOne[i]); 
+    END_FOR
+
+    //insert second array
+    FOR j FROM 0 TO y-1 STEP 1 DO
+        Read(tabTwo[j]);
+    END_FOR
+
+    //comparer elements du tab one et tab two
+
+    FOR i FROM 0 TO x-1  STEP 1 DO
+        FOR j FROM 0 TO y-1 STEP  1  DO
+            IF (tabOne[i] = tabTwo[j]) THEN
+                sumOverlapping := sumOverlapping + tabOne[i] + tabTwo[j] ;
+            END_IF
+        END_FOR
+    END_FOR
+
+    //output sum of overlapping elements
+
+    Write(sumOverlapping);
+END

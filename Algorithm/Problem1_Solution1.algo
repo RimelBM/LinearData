@@ -1,0 +1,43 @@
+ALGORITHM Sum_Distinct
+VAR
+    x,y,i,j : INTEGER ; 
+    tabOne : ARRAY_OF_INTEGER[x];
+    tabTwo : ARRAY_OF_INTEGER[y];
+    sumDistinct : INTEGER := 0;
+
+BEGIN
+     //insert first array
+    
+    FOR i FROM 0 TO x-1  STEP 1 DO
+        Read(tabOne[i]); 
+    END_FOR
+
+    //insert second array
+    FOR j FROM 0 TO y-1 STEP 1 DO
+        Read(tabTwo[j]);
+    END_FOR
+    
+    //comparer les element du first array with second
+
+    FOR i FROM 0 TO x-1 STEP 1  DO
+        FOR j FROM 0 TO y-1 STEP 1  DO
+            IF (tabOne[i]<>tabTwo[j]) THEN
+                sumDistinct := sumDistinct + tabOne[i];
+            END_IF
+        END_FOR
+    END_FOR
+
+    //inverser l operation
+
+    FOR j FROM 0 TO y-1 STEP 1  DO
+        FOR i FROM 0 TO x-1 STEP 1  DO
+            IF (tabTwo[j]<>tabOne[i]) THEN
+                sumDistinct := sumDistinct + tabTwo[j];
+            END_IF
+        END_FOR
+    END_FOR
+
+    Write(sumDistinct);
+
+
+END
